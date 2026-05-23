@@ -3,8 +3,18 @@ from django.http import HttpResponse
 from .models import Laptop
 
 def laptop_list(request):
-    laptops = Laptop.objects.all()
-    return render(request, 'laptops/laptop_list.html', {'laptops': laptops})
+    query = request.GET.get('q', '') # берём параметр q из URL
+    if query:
+        laptops = Laptop.objects.filter(
+            name__icontains=query # ищем по названию (без учёта регистра)
+        )
+    else:
+        laptops = Laptop.objects.all()
+        
+    return render(request, 'laptops/laptop_list.html', {
+        'laptops': laptops,
+        'query': query, # передаём текущий запрос в шаблон
+    })
 
 def laptop_detail(request, pk):
     laptop = get_object_or_404(Laptop, pk=pk)

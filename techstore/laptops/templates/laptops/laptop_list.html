@@ -17,6 +17,22 @@
 <body>
     <h1>💻 Каталог ноутбуков</h1>
 
+    <form method="GET">
+        <input 
+            type="text" 
+            name="q" 
+            value="{{ query }}"
+            placeholder="Поиск по названию..."
+            style="padding: 8px; width: 300px; border-radius: 5px; border: 1px solid #ccc;"
+        >
+        <button 
+            type="submit"
+            style="padding: 8px 15px; border-radius: 5px; background: #333; color: white; border: none; cursor: pointer;"
+        >
+            Найти
+        </button>
+    </form>
+
     {% for laptop in laptops %}
         <div class="card">
             <h2>

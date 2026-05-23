@@ -3,8 +3,17 @@ from django.http import HttpResponse
 from .models import Phone
 
 def phone_list(request):
-    phones = Phone.objects.all()
-    return render(request, 'phones/phone_list.html', {'phones': phones})
+    query = request.GET.get('q', '') # берём параметр q из URL
+    if query:
+        phones = Phone.objects.filter(
+            name__icontains=query # ищем по названию (без учёта регистра)
+        )
+    else:
+        phones = Phone.objects.all()
+    return render(request, 'phones/phone_list.html', {
+        'phones': phones,
+        'query': query, # передаём текущий запрос в шаблон
+    })
 
 def phone_detail(request, pk):
     phone = get_object_or_404(Phone, pk=pk)
