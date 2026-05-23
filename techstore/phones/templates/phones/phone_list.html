@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Каталог телефонов</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #f4f4f4; }
+        h1 { color: #333; }
+        .card {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>📱 Каталог телефонов</h1>
+
+    {% for phone in phones %}
+        <div class="card">
+            <h2>{{ phone.name }}</h2>
+            <p>Бренд: {{ phone.brand }}</p>
+            <p>Цена: {{ phone.price }} сом</p>
+            <p>Оперативная память: {{ phone.ram }} ГБ</p>
+        </div>
+    {% endfor %}
+</body>
+</html>
