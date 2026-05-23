@@ -19,10 +19,11 @@
 
     {% for phone in phones %}
         <div class="card">
-            <h2>{{ phone.name }}</h2>
+            <h2>
+                <a href="/phones/{{ phone.id }}/">{{ phone.name }}</a>
+            </h2>
             <p>Бренд: {{ phone.brand }}</p>
             <p>Цена: {{ phone.price }} сом</p>
-            <p>Оперативная память: {{ phone.ram }} ГБ</p>
         </div>
     {% endfor %}
 </body>

@@ -1,11 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from .models import Phone
 
 def phone_list(request):
-    phones = [
-        {'name': 'iPhone 13', 'price': 799},
-        {'name': 'Samsung Galaxy S21', 'price': 699},
-        {'name': 'Google Pixel 6', 'price': 599},
-    ]
+    phones = Phone.objects.all()
     return render(request, 'phones/phone_list.html', {'phones': phones})
+
+def phone_detail(request, pk):
+    phone = get_object_or_404(Phone, pk=pk)
+    return render(request, 'phones/phone_detail.html', {'phone': phone})
 # Create your views here.

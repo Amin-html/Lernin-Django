@@ -1,12 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from .models import Laptop
 
 def laptop_list(request):
-    laptops = [
-        {'name': 'MacBook Pro', 'price': 1299},
-        {'name': 'Dell XPS 13', 'price': 999},
-        {'name': 'Lenovo ThinkPad X1 Carbon', 'price': 1499},
-    ]
+    laptops = Laptop.objects.all()
     return render(request, 'laptops/laptop_list.html', {'laptops': laptops})
 
+def laptop_detail(request, pk):
+    laptop = get_object_or_404(Laptop, pk=pk)
+    return render(request, 'laptops/laptop_detail.html', {'laptop': laptop})
 # Create your views here.

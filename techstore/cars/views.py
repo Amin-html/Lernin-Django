@@ -1,11 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from .models import Car
 
 def car_list(request):
-    cars = [
-        {'name': 'Toyota Camry', 'price': 24000},
-        {'name': 'Honda Accord', 'price': 22000},
-        {'name': 'Ford Mustang', 'price': 26000},
-    ]
+    cars = Car.objects.all()
     return render(request, 'cars/car_list.html', {'cars': cars})
+
+def car_detail(request, pk):
+    car = get_object_or_404(Car, pk=pk)
+    return render(request, 'cars/car_detail.html', {'car': car})
 # Create your views here.

@@ -19,10 +19,11 @@
 
     {% for car in cars %}
         <div class="card">
-            <h2>{{ car.name }}</h2>
+            <h2>
+                <a href="/cars/{{ car.id }}/">{{ car.name }}</a>
+            </h2>
             <p>Бренд: {{ car.brand }}</p>
             <p>Цена: {{ car.price }} сом</p>
-            <p>Мощность: {{ car.power }} л.с.</p>
         </div>
     {% endfor %}
 </body>

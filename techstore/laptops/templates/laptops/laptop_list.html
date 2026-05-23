@@ -19,7 +19,9 @@
 
     {% for laptop in laptops %}
         <div class="card">
-            <h2>{{ laptop.name }}</h2>
+            <h2>
+                <a href="/laptops/{{ laptop.id }}/">{{ laptop.name }}</a>
+            </h2>
             <p>Бренд: {{ laptop.brand }}</p>
             <p>Цена: {{ laptop.price }} сом</p>
         </div>
