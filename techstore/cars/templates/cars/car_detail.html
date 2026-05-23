@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ laptop.name }}</title>
+    <title>{{ car.name }}</title>
     <style>
         body { font-family: Arial; padding: 20px; background: #f4f4f4; }
         .card {
@@ -23,6 +23,27 @@
         <p><b>Бренд:</b> {{ car.brand }}</p>
         <p><b>Цена:</b> {{ car.price }} сом</p>
         <p><b>Power:</b> {{ car.power }} л.с.</p>
+
+        <a href="/cars/{{ car.id }}/update/" style="
+            display: inline-block;
+            padding: 8px 15px;
+            background: #333;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 15px;
+            margin-right: 10px;
+        ">✏️ Редактировать</a>
+
+        <a href="/cars/{{ car.id }}/delete/" style="
+            display: inline-block;
+            padding: 8px 15px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 15px;
+        ">🗑️ Удалить</a>    
     </div>
 </body>
 </html>

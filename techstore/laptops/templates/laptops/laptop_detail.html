@@ -23,6 +23,27 @@
         <p><b>Бренд:</b> {{ laptop.brand }}</p>
         <p><b>Цена:</b> {{ laptop.price }} сом</p>
         <p><b>RAM:</b> {{ laptop.ram }} ГБ</p>
+
+        <a href="/laptops/{{ laptop.id }}/update/" style="
+            display: inline-block;
+            padding: 8px 15px;
+            background: #333;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 15px;
+            margin-right: 10px;
+        ">✏️ Редактировать</a>
+
+        <a href="/laptops/{{ laptop.id }}/delete/" style="
+            display: inline-block;
+            padding: 8px 15px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 15px;
+        ">🗑️ Удалить</a>
     </div>
 </body>
 </html>

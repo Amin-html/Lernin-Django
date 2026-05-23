@@ -23,6 +23,27 @@
         <p><b>Бренд:</b> {{ phone.brand }}</p>
         <p><b>Цена:</b> {{ phone.price }} сом</p>
         <p><b>RAM:</b> {{ phone.ram }} ГБ</p>
+
+        <a href="/phones/{{ phone.id }}/update/" style="
+            display: inline-block;
+            padding: 8px 15px;
+            background: #333;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 15px;
+            margin-right: 10px;
+        ">✏️ Редактировать</a>
+
+        <a href="/phones/{{ phone.id }}/delete/" style="
+            display: inline-block;
+            padding: 8px 15px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 15px;
+        ">🗑️ Удалить</a>
     </div>
 </body>
 </html>

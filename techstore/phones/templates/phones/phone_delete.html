@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Удалить телефон</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #f4f4f4; }
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 500px;
+        }
+        .btn-delete {
+            padding: 10px 20px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🗑️ Удалить телефон?</h1>
+        <p>Ты уверен что хочешь удалить <b>{{ phone.name }}</b>?</p>
+        <form method="POST">
+            {% csrf_token %}
+            <button class="btn-delete" type="submit">Да, удалить</button>
+        </form>
+        <a href="/phones/">← Отмена</a>
+    </div>
+</body>
+</html>

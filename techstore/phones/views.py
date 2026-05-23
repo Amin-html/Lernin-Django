@@ -31,4 +31,22 @@ def phone_create(request):
     else:
         form = PhoneForm()
     return render(request, 'phones/phone_create.html', {'form': form})
+
+def phone_update(request, pk):
+    phone = get_object_or_404(Phone, pk=pk)
+    if request.method == 'POST':
+        form = PhoneForm(request.POST, instance=phone)
+        if form.is_valid():
+            form.save()
+            return redirect('phone_list')
+    else:
+        form = PhoneForm(instance=phone)
+    return render(request, 'phones/phone_create.html', {'form': form})
+
+def phone_delete(request, pk):
+    phone = get_object_or_404(Phone, pk=pk)
+    if request.method == 'POST':
+        phone.delete()
+        return redirect('phone_list')
+    return render(request, 'phones/phone_delete.html', {'phone': phone})
 # Create your views here.
