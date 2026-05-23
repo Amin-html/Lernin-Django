@@ -22,4 +22,5 @@ urlpatterns = [
     path('laptops/', include('laptops.urls')),
     path('phones/', include('phones.urls')),
     path('cars/', include('cars.urls')),
+    path('accounts/', include('accounts.urls')),
 ]

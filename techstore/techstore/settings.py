@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'laptops',
     'phones',
     'cars',
+    'accounts',
 ]
 
 MIDDLEWARE = [
