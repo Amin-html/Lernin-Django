@@ -31,6 +31,17 @@
         >
             Найти
         </button>
+    </form>
+
+    <a href="/cars/create/" style="
+    display: inline-block;
+    margin: 10px 0;
+    padding: 8px 15px;
+    background: #333;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    ">➕ Добавить машину</a>
 
     {% for car in cars %}
         <div class="card">
@@ -38,6 +49,7 @@
                 <a href="/cars/{{ car.id }}/">{{ car.name }}</a>
             </h2>
             <p>Бренд: {{ car.brand }}</p>
+            <p>Power: {{ car.power }} л.с.</p>
             <p>Цена: {{ car.price }} сом</p>
         </div>
     {% endfor %}
