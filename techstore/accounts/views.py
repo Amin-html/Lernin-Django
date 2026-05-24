@@ -19,7 +19,8 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('laptop_list')
+            next_url = request.GET.get('next', 'laptop_list')  # перенаправляем на next или на главную
+            return redirect(next_url)
     else:
         form = AuthenticationForm()
     return render(request, 'accounts/login.html', {'form': form})

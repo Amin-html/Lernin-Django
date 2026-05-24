@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .models import Phone
 from .forms import PhoneForm
@@ -22,6 +23,7 @@ def phone_detail(request, pk):
     phone = get_object_or_404(Phone, pk=pk)
     return render(request, 'phones/phone_detail.html', {'phone': phone})
 
+@login_required # ⬅️ защита от неавторизованных пользователей
 def phone_create(request):
     if request.method == 'POST':
         form = PhoneForm(request.POST)
@@ -32,6 +34,7 @@ def phone_create(request):
         form = PhoneForm()
     return render(request, 'phones/phone_create.html', {'form': form})
 
+@login_required # ⬅️ защита от неавторизованных пользователей
 def phone_update(request, pk):
     phone = get_object_or_404(Phone, pk=pk)
     if request.method == 'POST':
@@ -43,6 +46,7 @@ def phone_update(request, pk):
         form = PhoneForm(instance=phone)
     return render(request, 'phones/phone_create.html', {'form': form})
 
+@login_required # ⬅️ защита от неавторизованных пользователей
 def phone_delete(request, pk):
     phone = get_object_or_404(Phone, pk=pk)
     if request.method == 'POST':

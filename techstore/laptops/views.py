@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .models import Laptop
 from .forms import LaptopForm
@@ -23,6 +24,7 @@ def laptop_detail(request, pk):
     laptop = get_object_or_404(Laptop, pk=pk)
     return render(request, 'laptops/laptop_detail.html', {'laptop': laptop})
 
+@login_required # ⬅️ защита от неавторизованных пользователей
 def laptop_create(request):
     if request.method == 'POST':
         form = LaptopForm(request.POST)
@@ -33,6 +35,7 @@ def laptop_create(request):
         form = LaptopForm()
     return render(request, 'laptops/laptop_create.html', {'form': form})
 
+@login_required # ⬅️ защита от неавторизованных пользователей
 def laptop_update(request, pk):
     laptop = get_object_or_404(Laptop, pk=pk)
     if request.method == 'POST':
@@ -44,6 +47,7 @@ def laptop_update(request, pk):
         form = LaptopForm(instance=laptop)
     return render(request, 'laptops/laptop_create.html', {'form': form})
 
+@login_required # ⬅️ защита от неавторизованных пользователей
 def laptop_delete(request, pk):
     laptop = get_object_or_404(Laptop, pk=pk)
     if request.method == 'POST':
