@@ -3,6 +3,19 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .models import Phone
 from .forms import PhoneForm
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from .serializers import PhoneSerializer
+
+class PhoneListAPI(generics.ListCreateAPIView):
+    queryset = Phone.objects.all()
+    serializer_class = PhoneSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+class PhoneDetailAPI(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Phone.objects.all()
+    serializer_class = PhoneSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 def phone_list(request):
     query = request.GET.get('q', '') # берём параметр q из URL

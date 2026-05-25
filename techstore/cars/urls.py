@@ -7,4 +7,8 @@ urlpatterns = [
     path('create/', views.car_create, name='car_create'),
     path('<int:pk>/update/', views.car_update, name='car_update'),
     path('<int:pk>/delete/', views.car_delete, name='car_delete'),
+
+    # API endpoints
+    path('api/', views.CarListAPI.as_view(), name='car_list_api'),
+    path('api/<int:pk>/', views.CarDetailAPI.as_view(), name='car_detail_api'),
 ]

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'phones',
     'cars',
     'accounts',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

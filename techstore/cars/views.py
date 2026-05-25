@@ -3,6 +3,19 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .models import Car
 from .forms import CarForm
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from .serializers import CarSerializer
+
+class CarListAPI(generics.ListCreateAPIView):
+    queryset = Car.objects.all()
+    serializer_class = CarSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+class CarDetailAPI(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Car.objects.all()
+    serializer_class = CarSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 def car_list(request):
     query = request.GET.get('q', '') # берём параметр q из URL

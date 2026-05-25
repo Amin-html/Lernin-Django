@@ -3,6 +3,19 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .models import Laptop
 from .forms import LaptopForm
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from .serializers import LaptopSerializer
+
+class LaptopListAPI(generics.ListCreateAPIView):
+    queryset = Laptop.objects.all()
+    serializer_class = LaptopSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+class LaptopDetailAPI(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Laptop.objects.all()
+    serializer_class = LaptopSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 def laptop_list(request):
     query = request.GET.get('q', '') # берём параметр q из URL
